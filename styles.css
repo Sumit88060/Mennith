@@ -316,3 +316,20 @@ h2 {
     transform: scale(1.05);
     background: var(--secondary-color);
 } 
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 300px;
+}
