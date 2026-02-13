@@ -110,14 +110,19 @@ function showNextQuestion(n) {
 }
 
 function celebrate() {
-    showNextQuestion(0);
+    document.querySelectorAll('.question-section').forEach(q => q.classList.add('hidden'));
+
     const c = document.getElementById('celebration');
     c.classList.remove('hidden');
 
     document.getElementById('celebrationTitle').textContent = config.celebration.title;
     document.getElementById('celebrationMessage').textContent = config.celebration.message;
     document.getElementById('celebrationEmojis').textContent = config.celebration.emojis;
+
+    // ✅ SHOW LETTER BUTTON HERE
+    document.getElementById("letterBtn").classList.remove("hidden");
 }
+
 
 // 💌 LOVE LETTER
 function showLoveLetter() {
