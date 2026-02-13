@@ -38,7 +38,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// 🎵 MUSIC (clean + no conflict)
+// 🎵 MUSIC (clean)
 function setupMusic() {
     if (!config.music.enabled) return;
 
@@ -65,18 +65,26 @@ function setupMusic() {
 }
 
 
-// ❤️ LOVE METER (FIXED)
+// 💖 LOVE METER (PINK ANIMATION VERSION)
 function setupLoveMeter() {
+    loveMeter.value = 100;
+    loveValue.textContent = 100;
+
     loveMeter.addEventListener("input", () => {
         const value = parseInt(loveMeter.value);
         loveValue.textContent = value;
 
-        // small animation
+        // ✨ bounce animation
         loveValue.style.transform = "scale(1.2)";
         setTimeout(() => loveValue.style.transform = "scale(1)", 150);
 
         if (value > 100) {
             extraLove.classList.remove("hidden");
+
+            // 💥 EXPANDING SLIDER
+            const overflow = (value - 100) / 9900;
+            const extraWidth = overflow * window.innerWidth * 0.6;
+            loveMeter.style.width = `calc(100% + ${extraWidth}px)`;
 
             if (value >= 5000) {
                 extraLove.textContent = config.loveMessages.extreme;
@@ -88,11 +96,30 @@ function setupLoveMeter() {
                 extraLove.textContent = config.loveMessages.normal;
                 extraLove.classList.remove("super-love");
             }
+
         } else {
             extraLove.classList.add("hidden");
             extraLove.classList.remove("super-love");
+            loveMeter.style.width = "100%";
         }
     });
+}
+
+
+// 💥 HEART EXPLOSION
+function createHeartExplosion() {
+    for (let i = 0; i < 40; i++) {
+        const heart = document.createElement("div");
+        const emojis = config.floatingEmojis.hearts;
+
+        heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+        heart.className = "heart";
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+
+        document.querySelector(".floating-elements").appendChild(heart);
+    }
 }
 
 
@@ -126,10 +153,13 @@ function celebrate() {
     document.getElementById("celebrationEmojis").textContent = config.celebration.emojis;
 
     document.getElementById("letterBtn").classList.remove("hidden");
+
+    // 💥 EXPLOSION
+    createHeartExplosion();
 }
 
 
-// 💌 LOVE LETTER MODAL
+// 💌 LOVE LETTER
 function showLoveLetter() {
     let modal = document.getElementById("loveLetterModal");
     modal.style.display = "flex";
@@ -141,7 +171,7 @@ function closeLoveLetter() {
 }
 
 
-// 💖 FLOATING EMOJIS
+// 💖 FLOATING ELEMENTS
 function createFloating() {
     let container = document.querySelector(".floating-elements");
 
@@ -149,8 +179,10 @@ function createFloating() {
         let d = document.createElement("div");
         d.innerHTML = e;
         d.className = "heart";
+
         d.style.left = Math.random() * 100 + "vw";
         d.style.animationDuration = (10 + Math.random() * 10) + "s";
+
         container.appendChild(d);
     });
 }
