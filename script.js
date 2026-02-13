@@ -61,18 +61,27 @@ function setupLoveMeter() {
 function setupMusic() {
     if (!config.music.enabled) return;
 
-    document.getElementById('musicSource').src = config.music.musicUrl;
+    const musicSource = document.getElementById('musicSource');
+    musicSource.src = config.music.musicUrl;
+
     bgMusic.volume = config.music.volume;
+    bgMusic.load();
 
-    document.addEventListener("click", () => {
-        if (!musicStarted) {
-            bgMusic.play().catch(()=>{});
+    // ✅ FORCE user interaction
+    function startMusicOnce() {
+        bgMusic.play().then(() => {
             musicToggle.textContent = config.music.stopText;
-            musicStarted = true;
-        }
-    });
+        }).catch(() => {});
 
-    musicToggle.addEventListener("click", () => {
+        document.removeEventListener("click", startMusicOnce);
+    }
+
+    document.addEventListener("click", startMusicOnce);
+
+    // Toggle button
+    musicToggle.addEventListener("click", (e) => {
+        e.stopPropagation(); // IMPORTANT
+
         if (bgMusic.paused) {
             bgMusic.play();
             musicToggle.textContent = config.music.stopText;
@@ -82,6 +91,7 @@ function setupMusic() {
         }
     });
 }
+
 
 function createFloatingElements() {
     const container = document.querySelector('.floating-elements');
