@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menn Will You Be My Valentine? 💝</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menn Will You Be My Valentine? 💝</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
 <div class="floating-elements"></div>
@@ -15,13 +16,11 @@
 <div class="container">
     <h1 id="valentineTitle"></h1>
 
-    <!-- 💌 Love Letter Button -->
-<button id="letterBtn" class="cute-btn hidden" onclick="showLoveLetter()">
-💌 Open My Letter
-</button>
+    <!-- Hidden Letter Button -->
+    <button id="letterBtn" class="cute-btn hidden" onclick="showLoveLetter()">💌 Open My Letter</button>
 
     <!-- Music -->
-    <div class="music-controls" id="musicControls">
+    <div class="music-controls">
         <button id="musicToggle" class="music-btn">🎵 Play Music</button>
         <audio id="bgMusic" loop>
             <source id="musicSource" type="audio/mpeg">
@@ -34,6 +33,7 @@
         <button class="cute-btn" onclick="moveButton(this)" id="yesBtn1"></button>
         <button class="cute-btn" onclick="moveButton(this)" id="noBtn1"></button>
 
+        <!-- SECRET BUTTON -->
         <div class="secret-answer">
             <button class="cute-btn special" onclick="showNextQuestion(2)" id="secretAnswerBtn"></button>
         </div>
@@ -58,7 +58,7 @@
     <!-- Q3 -->
     <div class="question-section hidden" id="question3">
         <h2 id="question3Text"></h2>
-        <button class="cute-btn final-yes" onclick="celebrate()" id="yesBtn3"></button>
+        <button class="cute-btn" onclick="celebrate()" id="yesBtn3"></button>
         <button class="cute-btn" onclick="moveButton(this)" id="noBtn3"></button>
     </div>
 
@@ -71,7 +71,7 @@
 </div>
 
 <!-- 💌 Modal -->
-<div id="loveLetterModal" class="love-letter hidden">
+<div id="loveLetterModal" class="love-letter">
     <div class="letter-box">
         <h2>For You ❤️</h2>
         <p id="loveLetterText"></p>
@@ -80,7 +80,6 @@
 </div>
 
 <script src="config.js"></script>
-<script src="theme.js"></script>
 <script src="script.js"></script>
 
 </body>
