@@ -56,23 +56,36 @@ function setupMusic() {
     };
 }
 
-function setupLoveMeter() {
-    loveMeter.addEventListener("input", () => {
-        let val = loveMeter.value;
-        loveValue.textContent = val;
+function setupMusic() {
+    if (!config.music.enabled) return;
 
-        if (val > 100) {
-            extraLove.classList.remove("hidden");
+    const source = document.getElementById("musicSource");
+    source.src = config.music.musicUrl;
 
-            if (val >= 5000) extraLove.textContent = config.loveMessages.extreme;
-            else if (val > 1000) extraLove.textContent = config.loveMessages.high;
-            else extraLove.textContent = config.loveMessages.normal;
+    bgMusic.volume = config.music.volume;
 
+    // 🔥 FORCE RELOAD AFTER SETTING SRC
+    bgMusic.load();
+
+    musicToggle.textContent = config.music.startText;
+
+    musicToggle.addEventListener("click", () => {
+        if (bgMusic.paused) {
+            bgMusic.play()
+                .then(() => {
+                    musicToggle.textContent = config.music.stopText;
+                })
+                .catch((err) => {
+                    console.error("Audio error:", err);
+                    alert("Click again to play music 🎵");
+                });
         } else {
-            extraLove.classList.add("hidden");
+            bgMusic.pause();
+            musicToggle.textContent = config.music.startText;
         }
     });
 }
+
 
 function moveButton(btn) {
     let x = Math.random() * (window.innerWidth - btn.offsetWidth - 20);
