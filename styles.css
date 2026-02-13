@@ -186,6 +186,15 @@ h2 {
     animation: fadeIn 0.3s ease;
 }
 
+.super-love {
+    font-size: 1.5em;
+    color: #ff4757;
+    font-weight: bold;
+    transform: scale(1.2);
+    animation: bounce 0.5s infinite alternate;
+}
+
+
 /* ================= ANIMATIONS ================= */
 @keyframes fadeIn {
     from {
