@@ -49,7 +49,7 @@ I love you more than words can explain.
 
     music: {
         enabled: true,
-        musicUrl: "https://res.cloudinary.com/dncywqfpb/video/upload/v1738399057/music_qrhjvy.mp3",
+       musicUrl: "./assets/song.mp3",
         startText: "🎵 Play Music",
         stopText: "🔇 Stop Music",
         volume: 0.5
