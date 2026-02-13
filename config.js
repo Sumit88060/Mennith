@@ -52,7 +52,7 @@ and how you always stand up for those who are afraid to speak up.
 My precious girl, watching you smile has never once failed to make me smile,  
 because you are my joy, my happiness, and my peace.
 
-Even in my wildest imagination, I never thought someone like you could exist—  
+Even in my wildest imagination, I never thought someone like you could exist   
 someone so cute, with the prettiest face, and everything about you just feels perfect to me.  
 If there was such a thing as perfection, it would be you, my sweet baby.
 
@@ -83,8 +83,8 @@ Always & forever ❤️
     music: {
         enabled: true,
         musicUrl: "./assets/song.mp3",
-        startText: "🎵 Play our song 😌",
-        stopText: "🔇 Okay pause it 💀",
+        startText: "🎵 Play your song 😌",
+        stopText: "🔇 Okay pause it ",
         volume: 0.5
     }
 };
